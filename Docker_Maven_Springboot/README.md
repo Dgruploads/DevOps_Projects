@@ -13,6 +13,7 @@ Before we begin with the above steps, we will be running this application on AWS
 Below are the commands and instructions that you can follow to run this application on EC2 instance.
 
 * Head over to https://start.spring.io./ , create a sample application and generate the application which should download the zip file to your local machine. (The same sample application code is available in this repo)
+  <img width="851" alt="image" src="https://github.com/Dgruploads/DevOps_Projects/assets/41875211/7ecc657a-197c-4354-9c11-eaa93bb9b857">
 * Unzip the contents of the zip file and copy them over to the EC2 instance using the below command.
   * scp -i <PEM_FILE> <SOURCE_PATH> <USERNAME>@<PUBLIC_IP_ADDRESS>:<DESTINATION_PATH_IN_THE_SERVER>
   * scp -i demo_key.pem -r ./springboot ubuntu@43.12.56.78:/home/ubuntu/springboot
@@ -26,6 +27,6 @@ Below are the commands and instructions that you can follow to run this applicat
   * sudo docker --version                 ===========> Validate the installed docker version
   * sudo service docker status            ===========> Check the docker running status (It should be in the running status)
 * Once you have the pre-requisites, go inside the app directory and run the below command
-  * <img width="851" alt="image" src="https://github.com/Dgruploads/DevOps_Projects/assets/41875211/7ecc657a-197c-4354-9c11-eaa93bb9b857">
+  
 
 * 
