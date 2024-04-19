@@ -1,0 +1,24 @@
+### The below steps can be used to setup kubernetes cluster on AWS using Kops ###
+1 : Install Kops using the following link - https://kops.sigs.k8s.io/getting_started/install/
+2 : Update the system
+    sudo apt update -y
+3 : Install aws cli tool   
+    sudo apt install awscli -y
+4 : validate if CLI is installed   
+    aws --version
+5 : Create an IAM user with necessary permissions and programmatic access (Administrator access is recommended)    
+6 : Generate the access key and secret for the above IAM user.
+7 : Login to AWS from the Kops EC2 instance using the below command    
+    aws configure
+8 : The above command will prompt for access key, secret access key, region and output format. Provide all the information
+9 : Create an S3 bucket - This bucket will be used to store the cluster related information
+10 : Create a hosted zone in Route53 - For the DNS, i am using Hostinger. This is where my DNS is registered.
+11 : Add the NS records from Route53 hosted zone to Hostinger server records.
+12 : Install kubectl using the below link
+     https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+13 : Generate SSH keys by running the below command
+    ssh-keygen -f .ssh/id_rsa
+14 : Run the below example command to create the cluster. NOTE : You will have to update the command with your specific changes
+    kops create cluster --name=kubernetes.cloudtechiez.cloud --state=s3://dgruploads-kube-kops-demo --zones=us-east-1a --node-count=1 --node-size=t2.medium --control-plane-size=t2.medium --dns-zone=kubernetes.cloudtechiez.cloud
+15 : Running the above command will generate a preview of all the resources that Kops will create. Once you are okay with the preview, run the below command to create those resources. Update the S3 bucket to your S3 bucket.
+    kops update cluster --name kubernetes.cloudtechiez.cloud --yes --admin --state=s3://dgruploads-kube-kops-demo
