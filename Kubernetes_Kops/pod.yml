@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: first-pod-example
+  labels:
+    app: first-pod-example
+spec:
+  containers:
+  - name: first-pod-example-container
+    image: dgruploads/tomcat-image
+    ports:
+    - name: tomcatport
+      containerPort: 8080
